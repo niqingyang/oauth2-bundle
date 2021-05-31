@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Trikoder\Bundle\OAuth2Bundle\DependencyInjection;
 
 use Defuse\Crypto\Key;
+use League\OAuth2\Server\AuthorizationServer;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -78,6 +79,10 @@ final class Configuration implements ConfigurationInterface
                     ->info("How long the issued refresh token should be valid for, used as a default if there is no grant type specific value set.\nThe value should be a valid interval: http://php.net/manual/en/dateinterval.construct.php#refsect1-dateinterval.construct-parameters")
                     ->cannotBeEmpty()
                     ->defaultValue('P1M')
+                ->end()
+                ->scalarNode('response_type')
+                    ->info("implementation class of propery \$responseType of the class League\OAuth2\Server\AuthorizationServer, used as a default if there is empty.")
+                    ->defaultValue(null)
                 ->end()
 
         // @TODO Remove in v4 start

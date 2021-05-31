@@ -108,6 +108,7 @@
             <argument key="$scopeRepository" type="service" id="League\OAuth2\Server\Repositories\ScopeRepositoryInterface" />
             <argument key="$privateKey" />
             <argument key="$encryptionKey" />
+            <argument key="$responseType" />
             <configurator service="Trikoder\Bundle\OAuth2Bundle\League\AuthorizationServer\GrantConfigurator"/>
         </service>
         <service id="league.oauth2.server.authorization_server" alias="League\OAuth2\Server\AuthorizationServer" />

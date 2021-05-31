@@ -150,6 +150,12 @@ final class TrikoderOAuth2Extension extends Extension implements PrependExtensio
             $authorizationServer->replaceArgument('$encryptionKey', new Reference('trikoder.oauth2.defuse_key'));
         }
 
+        if ($config['response_type']) {
+            $authorizationServer->replaceArgument('$responseType', new Definition($config['response_type']));
+        } else {
+            $authorizationServer->replaceArgument('$responseType', null);
+        }
+
         $grantTypes = $config['grant_types'];
 
         if ($grantTypes['client_credentials']['enable']) {
